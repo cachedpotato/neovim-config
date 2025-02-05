@@ -19,8 +19,8 @@ return {
                     i = {
                         -- escape telescope in insert mode
                         ["<esc>"] = actions.close,
-                        ["<M-j>"] = "move_selection_next",
-                        ["<M-k>"] = "move_selection_previous",
+                        ["<M-j>"] = actions.move_selection_next,
+                        ["<M-k>"] = actions.move_selection_previous,
                         ["<M-h>"] = actions.preview_scrolling_up,
                         ["<M-l>"] = actions.preview_scrolling_down,
                     },
