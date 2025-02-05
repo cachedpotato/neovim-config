@@ -13,9 +13,8 @@ return {
                     package_pending = "➜",
                     package_uninstalled = "✗"
                 }
-            }
+            },
         })
-
         mason_lspconfig.setup({})
     end,
 }

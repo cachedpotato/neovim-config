@@ -1,2 +1,2 @@
-require("global")
+require("config.core")
 require("config.lazy")
