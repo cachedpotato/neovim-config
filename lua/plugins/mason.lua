@@ -15,6 +15,8 @@ return {
                 }
             },
         })
-        mason_lspconfig.setup({})
+        mason_lspconfig.setup({
+            ['rust_analyzer'] = function() end,
+        })
     end,
 }

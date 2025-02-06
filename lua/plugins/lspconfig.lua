@@ -25,14 +25,13 @@ return {
         })
         mason_lspconfig.setup_handlers({
             --default setup function for installed servers
-            --function(server_name)
-            --    lspconfig[server_name].setup({
-            --        capabilities = capabilities,
-            --    })
-            --end,
-            lspconfig.lua_ls.setup({
-                capabilities = capabilities,
-            })
+            function(server_name)
+                lspconfig[server_name].setup({
+                    capabilities = capabilities,
+                })
+            end,
+
+            ["rust_analyzer"] = function() end,
         })
     end,
 }

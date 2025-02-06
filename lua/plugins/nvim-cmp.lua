@@ -21,6 +21,7 @@ return {
         require("luasnip.loaders.from_vscode").lazy_load()
 
         cmp.setup({
+            --preselect = 'None', -- don't select anything upon load
             completion = {
                 completeopt = "menu, menuone, preview, noselect",
             },
@@ -34,25 +35,32 @@ return {
                 ['<M-k>'] = cmp.mapping.select_prev_item(),
                 ['<M-h>'] = cmp.mapping.scroll_docs(-4),
                 ['<M-l>'] = cmp.mapping.scroll_docs(4),
-                ['<M-Space>'] = cmp.mapping.complete(),             --show completion suggestions
+                ['<M-Space>'] = cmp.mapping.complete(), --show completion suggestions
                 ['<M-e>'] = cmp.mapping.abort(),
-                ['<CR>'] = cmp.mapping.confirm({ select = true }),  -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+                -- ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+                ['<CR>'] = cmp.mapping(function(fallback)
+                    if cmp.get_active_entry() then
+                        cmp.confirm({ select = true })
+                    else
+                        fallback()
+                    end
+                end, { "i", "c" })
             }),
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
-                { name = "luasnip" },   -- snippets
-                { name = "buffer" },    -- text within current buffer
-                { name = "path" },      -- filesystem paths
+                { name = "luasnip" }, -- snippets
+                { name = "buffer" },  -- text within current buffer
+                { name = "path" },    -- filesystem paths
             }),
 
             formatting = {
                 format = lspkind.cmp_format({
                     maxwidth = {
-                        menu = 20,              -- leading text
-                        abbr = 20,              -- actual suggestion item
+                        menu = 20, -- leading text
+                        abbr = 20, -- actual suggestion item
                     },
                     ellipsis_char = "...",
-                    show_labelDetails = true    -- default false
+                    show_labelDetails = true -- default false
                 }),
                 expandable_indicator = true,
                 fields = { cmp.ItemField.Abbr, cmp.ItemField.Kind },

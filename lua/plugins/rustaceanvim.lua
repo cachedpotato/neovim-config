@@ -6,5 +6,5 @@ return {
         cargo = {
             allFeatures = true,
         },
-    }
+    },
 }

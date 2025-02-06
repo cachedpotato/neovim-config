@@ -1,12 +1,13 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    event = {"BufReadPre", "BufNewFile" },
+    event = { "BufReadPre", "BufNewFile" },
     build = ":TSUpdate",
     dependencies = {
         "windwp/nvim-ts-autotag",
-
+        "nvim-treesitter/nvim-treesitter-refactor",
+        "nvim-treesitter/nvim-treesitter-context",
     },
-    config = function ()
+    config = function()
         local treesitter = require("nvim-treesitter.configs")
 
         treesitter.setup({
@@ -28,6 +29,20 @@ return {
                     node_decremental = "<bs>",
                     scope_incremental = false,
                 },
+            },
+            refactor = {
+                highlight_definitions = {
+                    enable = true,
+                    clear_on_cursor_move = true,
+                },
+                navivation = {
+                    enable = true,
+                    keymaps = {
+                        goto_definition = "<a-*>",
+                        goto_next_usage = "<a->>",
+                        goto_previous_usage = "<a-<>"
+                    }
+                }
             },
             auto_install = false,
             ignore_install = {},

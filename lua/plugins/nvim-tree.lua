@@ -8,6 +8,11 @@ return {
     config = function()
         local tree = require("nvim-tree")
         tree.setup({
+            actions = {
+                open_file = {
+                    quit_on_open = true -- default false
+                },
+            },
             view = {
                 width = 30, -- explorer width
                 relativenumber = true,
