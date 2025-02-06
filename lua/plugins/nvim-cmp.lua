@@ -21,7 +21,6 @@ return {
         require("luasnip.loaders.from_vscode").lazy_load()
 
         cmp.setup({
-            --preselect = 'None', -- don't select anything upon load
             completion = {
                 completeopt = "menu, menuone, preview, noselect",
             },
@@ -37,14 +36,18 @@ return {
                 ['<M-l>'] = cmp.mapping.scroll_docs(4),
                 ['<M-Space>'] = cmp.mapping.complete(), --show completion suggestions
                 ['<M-e>'] = cmp.mapping.abort(),
-                -- ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-                ['<CR>'] = cmp.mapping(function(fallback)
-                    if cmp.get_active_entry() then
-                        cmp.confirm({ select = true })
-                    else
-                        fallback()
-                    end
-                end, { "i", "c" })
+                -- ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item.
+                ["<CR>"] = cmp.mapping({
+                    i = function(fallback)
+                        if cmp.visible() and cmp.get_active_entry() then
+                            cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+                        else
+                            fallback()
+                        end
+                    end,
+                    s = cmp.mapping.confirm({ select = true }),
+                    c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+                }),
             }),
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },

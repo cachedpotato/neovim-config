@@ -38,9 +38,9 @@ return {
                 navivation = {
                     enable = true,
                     keymaps = {
-                        goto_definition = "<a-*>",
-                        goto_next_usage = "<a->>",
-                        goto_previous_usage = "<a-<>"
+                        goto_definition = "<M-*>",
+                        goto_next_usage = "<M->>",
+                        goto_previous_usage = "<M-<>"
                     }
                 }
             },

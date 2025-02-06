@@ -33,5 +33,9 @@ return {
 
             ["rust_analyzer"] = function() end,
         })
+
+        -- inlay hint option
+        -- why the fuck does the inlay_hint plugin not work oh my fucking god
+        vim.lsp.inlay_hint.enable(true)
     end,
 }
