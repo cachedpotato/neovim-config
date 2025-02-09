@@ -15,7 +15,7 @@ return {
                     local bufnr = vim.api.nvim_get_current_buf()
                     --keymaps
                     keymap.set("n", "<leader>rt", function()
-                            cmd.RustLsp({ 'testables', '--show-output' })
+                            cmd.RustLsp({ 'testables' })
                         end,
                         { desc = "rustaceanvim see testables", silent = true, buffer = bufnr }
                     )

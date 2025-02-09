@@ -21,14 +21,26 @@ return {
         require("luasnip.loaders.from_vscode").lazy_load()
 
         cmp.setup({
+            preselect = 'None',
+
             completion = {
                 completeopt = "menu, menuone, preview, noselect",
             },
+
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
                 end,
             },
+
+            view = {
+                entries = {
+                    name = 'custom',
+                    selection_order = "top_down",
+                    follow_cursor = false,
+                }
+            },
+
             mapping = cmp.mapping.preset.insert({
                 ['<M-j>'] = cmp.mapping.select_next_item(),
                 ['<M-k>'] = cmp.mapping.select_prev_item(),

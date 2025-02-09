@@ -24,7 +24,9 @@ opt.ignorecase = true
 opt.smartcase = true
 
 --gutter
-opt.signcolumn = "yes"
+opt.signcolumn = "yes:2"
+opt.statuscolumn = "%2s%l"
+opt.numberwidth = 3
 
 --inline diagnostics
 vim.diagnostic.config({

@@ -5,7 +5,6 @@ return {
     },
     config = function()
         local mason = require("mason")
-        local mason_lspconfig = require("mason-lspconfig")
         mason.setup({
             ui = {
                 icons = {
@@ -14,9 +13,6 @@ return {
                     package_uninstalled = "✗"
                 }
             },
-        })
-        mason_lspconfig.setup({
-            ['rust_analyzer'] = function() end,
         })
     end,
 }
