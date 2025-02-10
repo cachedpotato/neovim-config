@@ -5,6 +5,24 @@ return {
     opts = {
         dim = { enabled = false, },
 
+        -- Git utils
+        -- [1] Blame line
+        git = {
+            enabled = true,
+        },
+        -- [2] Browse repo
+        gitbrowse = {
+            enabled = true,
+        },
+        -- [3] LazyGit
+        lazygit = {
+            enabled = true,
+            win = {
+                style = "lazygit",
+            },
+        },
+        --
+
         notifier = {
             enabled = true,
             timeout = 2500,
@@ -57,7 +75,10 @@ return {
             end,
             desc = "Snacks Toggle Dim"
         },
-        { "<leader>.", function() Snacks.scratch() end,        desc = "Snacks Toggle Scratch Buffer" },
-        { "<leader>S", function() Snacks.scratch.select() end, desc = "Snacks Select Scratch Buffer" },
+        { "<leader>.",  function() Snacks.scratch() end,        desc = "Snacks Toggle Scratch Buffer" },
+        { "<leader>S",  function() Snacks.scratch.select() end, desc = "Snacks Select Scratch Buffer" },
+        { "<leader>gg", function() Snacks.lazygit() end,        desc = "Snacks LazyGit" },
+        { "<leader>gb", function() Snacks.git.blame_line() end, desc = "Snacks Git Blame Line" },
+        { "<leader>gl", function() Snacks.lazygit.log() end,    desc = "Snacks View LazyGit Log" },
     }
 }

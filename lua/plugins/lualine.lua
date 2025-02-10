@@ -6,7 +6,7 @@ return {
         lualine.setup({
             options = {
                 icons_enabled = true,
-                theme = 'auto', -- default auto
+                theme = 'gruvbox-material', -- default auto
                 component_separators = { left = '', right = '' },
                 section_separators = { left = '', right = '' },
                 disabled_filetypes = {
