@@ -24,8 +24,9 @@ return {
                         ["<M-h>"] = actions.preview_scrolling_up,
                         ["<M-l>"] = actions.preview_scrolling_down,
                     },
-                }
+                },
             },
+
             extensions = {
                 fzf = {
                     fuzzy = true,                   -- only do exact matching

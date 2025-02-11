@@ -25,7 +25,6 @@ return {
 
     config = function()
         local neotest = require("neotest")
-        local bufnr = vim.api.nvim_get_current_buf()
         neotest.setup({
             adapters = {
                 require("neotest-plenary"),
@@ -40,6 +39,10 @@ return {
                 enabled = true,
                 open_on_run = true,
             },
+
+            summary  = {
+                open = "botright vsplit | vertical resize 30",
+            }
         })
     end
 }

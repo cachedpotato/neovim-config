@@ -26,10 +26,10 @@ return {
         vim.diagnostic.config({
             signs = {
                 text = {
-                    [vim.diagnostic.severity.ERROR] = 'E', --'', asdasd
-                    [vim.diagnostic.severity.WARN] = 'W',  --'',
-                    [vim.diagnostic.severity.HINT] = 'H',  --'󰠠',
-                    [vim.diagnostic.severity.INFO] = 'I',  --'',
+                    [vim.diagnostic.severity.ERROR] = '', --'', asdasd
+                    [vim.diagnostic.severity.WARN] = '',  --'',
+                    [vim.diagnostic.severity.HINT] = '',  --'󰠠',
+                    [vim.diagnostic.severity.INFO] = '',  --'',
                 },
                 linehl = {
                     [vim.diagnostic.severity.ERROR] = 'DiagnosticErrorLn',
@@ -40,6 +40,8 @@ return {
                 numhl = {
                     [vim.diagnostic.severity.ERROR] = 'DiagnosticError',
                     [vim.diagnostic.severity.WARN] = 'DiagnosticWarn',
+                    [vim.diagnostic.severity.HINT] = 'DiagnosticHint',
+                    [vim.diagnostic.severity.INFO] = 'DiagnosticInfo',
                 }
             },
         })
@@ -105,22 +107,5 @@ return {
                 keymap.set("n", "<leader>[d", vim.diagnostic.open_float, opts)
             end,
         })
-
-        -- with snacks notifier
-        --vim.api.nvim_create_autocmd("LspProgress", {
-        --    ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
-        --    callback = function(ev)
-        --        local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-        --        local bufnr = vim.api.nvim_get_current_buf()
-        --        vim.notify(vim.lsp.status(), "info", {
-        --            id = "lsp_progress",
-        --            title = vim.lsp.get_clients({ buffer = bufnr })[1].name, --"LSP Progress",
-        --            opts = function(notif)
-        --                notif.icon = ev.data.params.value.kind == "end" and " "
-        --                    or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
-        --            end,
-        --        })
-        --    end,
-        --})
     end,
 }

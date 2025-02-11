@@ -24,9 +24,8 @@ opt.ignorecase = true
 opt.smartcase = true
 
 --gutter
-opt.signcolumn = "yes:2"
-opt.statuscolumn = "%2s%l"
-opt.numberwidth = 3
+opt.signcolumn = "yes:1"
+opt.statuscolumn = "%s%3l ┃ "
 
 --inline diagnostics
 vim.diagnostic.config({
@@ -39,4 +38,6 @@ opt.cursorline = true
 --color
 opt.termguicolors = true
 opt.background = "dark"
-opt.signcolumn = "yes"
+
+--cmdline height
+opt.cmdheight = 0
