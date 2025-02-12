@@ -44,9 +44,11 @@ return {
                         { desc = 'rustaceanvim hover actions', silent = true, buffer = bufnr }
                     )
 
-                    -- debug
-                    -- maybe after I set nvim-dap but don't feel the need to rn
-                    --keymap.set("n", "<leader>rd", cmd.RustLsp('debuggables'), { desc = "rustaceanvim see debuggables" })
+                    keymap.set("n", "<leader>rD", cmd.RustLsp('debuggables'),
+                        { desc = "rustaceanvim see debuggables", silent = true, buffer = bufnr })
+
+                    keymap.set("n", "<leader>rO", cmd.RustLsp('openDocs'),
+                        { desc = "rustaceanvim open docs.rs documentation", silent = true, buffer = bufnr })
                 end,
 
                 default_settings = {

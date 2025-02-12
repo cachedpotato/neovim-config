@@ -1,5 +1,18 @@
 return {
     "rcarriga/nvim-dap-ui",
+    dependencies = {
+        "nvim-neotest/nvim-nio",
+        {
+            "theHamsta/nvim-dap-virtual-text",
+            opts = {}
+        },
+    },
+    opts = function()
+        local dap = require("dap")
+        local dapui = require("dapui")
+        dapui.setup()
+    end,
+
     config = function()
         local dap = require("dap")
         local dapui = require("dapui")
@@ -16,7 +29,12 @@ return {
         dap.listeners.before.event_exited.dapui_config = function()
             dapui.close()
         end
-    end
+    end,
+
+    keys = {
+        { "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI Toggle" },
+        { "<leader>de", function() require("dapui").eval() end,     desc = "Dap UI Eval",  mode = { "n", "v" } },
+    }
 
 
 }

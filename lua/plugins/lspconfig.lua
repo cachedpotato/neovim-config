@@ -95,10 +95,10 @@ return {
                 keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 
                 opts.desc = "Show buffer diagnostics"
-                keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+                keymap.set("n", "sD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
                 opts.desc = "Show line diagnostic"
-                keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+                keymap.set("n", "sd", vim.diagnostic.open_float, opts)
 
                 opts.desc = "Show next diagnostic"
                 keymap.set("n", "<leader>]d", vim.diagnostic.open_float, opts)
