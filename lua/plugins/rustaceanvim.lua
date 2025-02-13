@@ -14,6 +14,21 @@ return {
                 on_attach = function()
                     local bufnr = vim.api.nvim_get_current_buf()
                     --keymaps
+                    keymap.set("n", "<leader>ru", function()
+                            cmd.RustLsp({ 'run' })
+                        end,
+                        { desc = "rustaceanvim run", silent = true, buffer = bufnr }
+                    )
+                    keymap.set("n", "<leader>rR", function()
+                            cmd.RustLsp({ 'runnables' })
+                        end,
+                        { desc = "rustaceanvim see runnables", silent = true, buffer = bufnr }
+                    )
+                    keymap.set("n", "<leader>r!", function()
+                            cmd.RustLsp({ 'runnables', bang = true })
+                        end,
+                        { desc = "rustaceanvim run previous", silent = true, buffer = bufnr }
+                    )
                     keymap.set("n", "<leader>rt", function()
                             cmd.RustLsp({ 'testables' })
                         end,
@@ -30,7 +45,7 @@ return {
                         { desc = "rustaceanvim get current diagnostic", silent = true, buffer = bufnr }
                     )
                     keymap.set("n", "<leader>rr", function()
-                            cmd.RustLsp('relatedDiagnostic')
+                            cmd.RustLsp('relatedDiagnostics')
                         end,
                         { desc = "rustaceanvim jump to related diagnostic", silent = true, buffer = bufnr }
                     )

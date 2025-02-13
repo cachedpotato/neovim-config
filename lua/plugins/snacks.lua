@@ -115,7 +115,21 @@ return {
             enabled = true,
         },
         -- styling for stuff
-        -- styles = {},
+        styles = {
+            {
+                border = "rounded",
+                zindex = 100,
+                width = 0.6,
+                height = 0.6,
+                minimal = false,
+                title = " Notification History ",
+                title_pos = "center",
+                ft = "markdown",
+                bo = { filetype = "snacks_notif_history", modifiable = false },
+                wo = { winhighlight = "Normal:SnacksNotifierHistory" },
+                keys = { q = "close" },
+            }
+        },
     },
 
     keys = {
@@ -131,11 +145,12 @@ return {
             end,
             desc = "Snacks Toggle Dim"
         },
-        { "<leader>.",  function() Snacks.scratch() end,        desc = "Snacks Toggle Scratch Buffer" },
-        { "<leader>S",  function() Snacks.scratch.select() end, desc = "Snacks Select Scratch Buffer" },
-        { "<leader>gg", function() Snacks.lazygit() end,        desc = "Snacks LazyGit" },
-        { "<leader>gb", function() Snacks.gitbrowse() end,      desc = "Snacks Git Browse Repo" },
-        { "<leader>gB", function() Snacks.git.blame_line() end, desc = "Snacks Git Blame Line" },
-        { "<leader>gl", function() Snacks.lazygit.log() end,    desc = "Snacks View LazyGit Log" },
+        { "<leader>.",  function() Snacks.scratch() end,               desc = "Snacks Toggle Scratch Buffer" },
+        { "<leader>S",  function() Snacks.scratch.select() end,        desc = "Snacks Select Scratch Buffer" },
+        { "<leader>gg", function() Snacks.lazygit() end,               desc = "Snacks LazyGit" },
+        { "<leader>gb", function() Snacks.gitbrowse() end,             desc = "Snacks Git Browse Repo" },
+        { "<leader>gB", function() Snacks.git.blame_line() end,        desc = "Snacks Git Blame Line" },
+        { "<leader>gl", function() Snacks.lazygit.log() end,           desc = "Snacks View LazyGit Log" },
+        { "<leader>sN", function() Snacks.notifier.show_history() end, desc = "Snacks show notification History" },
     }
 }
