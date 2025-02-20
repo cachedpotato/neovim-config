@@ -128,8 +128,51 @@ return {
                 bo = { filetype = "snacks_notif_history", modifiable = false },
                 wo = { winhighlight = "Normal:SnacksNotifierHistory" },
                 keys = { q = "close" },
-            }
+            },
+            {
+                bo = {
+                    filetype = "snacks_terminal",
+                },
+                wo = {},
+                keys = {
+                    q = "hide",
+                    gf = function(self)
+                        local f = vim.fn.findfile(vim.fn.expand("<cfile>"), "**")
+                        if f == "" then
+                            Snacks.notify.warn("No file under cursor")
+                        else
+                            self:hide()
+                            vim.schedule(function()
+                                vim.cmd("e " .. f)
+                            end)
+                        end
+                    end,
+                    term_normal = {
+                        "<esc>",
+                        function(self)
+                            self.esc_timer = self.esc_timer or (vim.uv or vim.loop).new_timer()
+                            if self.esc_timer:is_active() then
+                                self.esc_timer:stop()
+                                vim.cmd("stopinsert")
+                            else
+                                self.esc_timer:start(200, 0, function() end)
+                                return "<esc>"
+                            end
+                        end,
+                        mode = "t",
+                        expr = true,
+                        desc = "Double escape to normal mode",
+                    },
+                },
+            },
         },
+
+        terminal = {
+            enabled = true,
+            win = {
+                style = "terminal",
+            }
+        }
     },
 
     keys = {
@@ -152,5 +195,7 @@ return {
         { "<leader>gB", function() Snacks.git.blame_line() end,        desc = "Snacks Git Blame Line" },
         { "<leader>gl", function() Snacks.lazygit.log() end,           desc = "Snacks View LazyGit Log" },
         { "<leader>sN", function() Snacks.notifier.show_history() end, desc = "Snacks show notification History" },
+        { "<leader>st", function() Snacks.terminal.toggle() end,       desc = "Snacks Terminal Toggle" },
+
     }
 }
