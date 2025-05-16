@@ -74,39 +74,6 @@ return {
             }
         })
 
-
-
-
-        --mason_lspconfig.setup_handlers({
-        --    --default setup function for installed servers
-        --    function(server_name)
-        --        lspconfig[server_name].setup({
-        --            capabilities = capabilities,
-        --        })
-        --    end,
-
-        --    ["rust_analyzer"] = function() end,
-
-        --    ["lua_ls"] = function()
-        --        lspconfig["lua_ls"].setup({
-        --            capabilities = capabilities,
-        --            settings = {
-        --                Lua = {
-        --                    diagnostics = {
-        --                        globals = { "vim" },
-        --                    },
-        --                    completion = {
-        --                        callSnippet = "Replace",
-        --                    },
-        --                    hint = {
-        --                        enable = true,
-        --                    },
-        --                },
-        --            },
-        --        })
-        --    end,
-        --})
-
         -- inlay hint option
         -- why the fuck does the inlay_hint plugin not work oh my fucking god
         vim.lsp.inlay_hint.enable(true)
