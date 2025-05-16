@@ -45,6 +45,7 @@ return {
                 }
             },
         })
+
         mason_lspconfig.setup({
             ensure_installed = { "lua_ls", "ruff", "rust_analyzer" },
         })
