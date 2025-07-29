@@ -13,13 +13,20 @@ return {
         treesitter.setup({
             highlight = { enable = true },
             indent = { enable = true },
+            -- added r/rmarkdown stuff
             ensure_installed = {
                 "c",
                 "lua",
                 "vim",
                 "rust",
                 "python",
-                "r"
+                "r",
+                "markdown",
+                "markdown_inline",
+                "rnoweb",
+                "yaml",
+                "latex",
+                "csv",
             },
             incremental_selection = {
                 enable = true,
